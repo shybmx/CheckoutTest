@@ -16,11 +16,6 @@ namespace Checkout.Payment.Bank.Stub.Controllers
         private Database _database;
         private Container _container;
 
-        public BankStub()
-        {
-            
-        }
-
         [HttpGet("executePurchase")]
         public async Task<IActionResult> BankExecutePurchase([FromQuery] PaymentDetails paymentDetails)
         {
