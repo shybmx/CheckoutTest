@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Payment.Gateway.AP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Payment.Gateway.Contracts", "Checkout.Payment.Gatway.Contracts\Checkout.Payment.Gateway.Contracts.csproj", "{AC6199C6-8FD2-45E8-BA01-0ED3C2CAB892}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{47B4C138-F209-4FCC-8FCD-71AA35DC4B0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Payment.Gateway.API.UnitTests", "Checkout.Payment.Gateway.API.UnitTests\Checkout.Payment.Gateway.API.UnitTests.csproj", "{99AEA606-E66D-442E-AE97-17BE5DE6581E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{AC6199C6-8FD2-45E8-BA01-0ED3C2CAB892}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC6199C6-8FD2-45E8-BA01-0ED3C2CAB892}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC6199C6-8FD2-45E8-BA01-0ED3C2CAB892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99AEA606-E66D-442E-AE97-17BE5DE6581E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99AEA606-E66D-442E-AE97-17BE5DE6581E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99AEA606-E66D-442E-AE97-17BE5DE6581E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99AEA606-E66D-442E-AE97-17BE5DE6581E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{99AEA606-E66D-442E-AE97-17BE5DE6581E} = {47B4C138-F209-4FCC-8FCD-71AA35DC4B0F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {59BFDD7A-1AD8-45B6-B53A-762156D288E8}

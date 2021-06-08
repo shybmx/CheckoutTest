@@ -18,7 +18,8 @@ namespace Checkout.Payment.Gateway.API.Processes
 
         public async Task<BankResponse> SendPayment(PaymentDetails paymentDetails)
         {
-             await _httpClient.GetAsync<BankResponse>(new HttpRequestMessage());
+            return null;
+             //await _httpClient.GetAsync<BankResponse>();
         }
     }
 }

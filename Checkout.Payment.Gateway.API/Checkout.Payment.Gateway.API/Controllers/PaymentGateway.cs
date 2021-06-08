@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Checkout.Payment.Gateway.Contracts;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Checkout.Payment.Gateway.API.Controllers
 {
@@ -7,16 +9,16 @@ namespace Checkout.Payment.Gateway.API.Controllers
     public class PaymentGateway : ControllerBase
     {
         [HttpGet]
-        public IActionResult Get([FromQuery] PaymentGateway paymentGateway)
+        public async Task<IActionResult> ProcessPayment([FromQuery] PaymentDetails paymentDetails)
         {
-            if(paymentGateway == null)
+            if(paymentDetails == null)
             {
                 return new BadRequestObjectResult("Invalid Query");
             }
 
 
 
-            return null;
+            return new OkObjectResult("");
         }
     }
 }

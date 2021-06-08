@@ -4,7 +4,7 @@ namespace Checkout.Payment.Gateway.Contracts
 {
     public class PaymentDetails
     {
-        public int CardNumber { get; set; }
+        public long CardNumber { get; set; }
         public DateTime Expiry { get; set; }
         public double Amount { get; set; }
         public string Currency { get; set; }

@@ -8,4 +8,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Checkout.Payment.Gatway.Contracts\Checkout.Payment.Gateway.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>
