@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Checkout.Payment.Gateway.API.Controllers
 {
@@ -11,7 +7,7 @@ namespace Checkout.Payment.Gateway.API.Controllers
     public class WeatherForecastController : ControllerBase
     {
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IActionResult Get()
         {
             return null;
         }
