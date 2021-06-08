@@ -22,15 +22,6 @@
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         }
       },
-      "Newtonsoft.Json/13.0.1": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
-        }
-      },
       "Swashbuckle.AspNetCore/5.6.3": {
         "type": "package",
         "dependencies": {
@@ -84,16 +75,6 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
-      },
-      "Checkout.Payment.Gateway.Contracts/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "compile": {
-          "bin/placeholder/Checkout.Payment.Gateway.Contracts.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Checkout.Payment.Gateway.Contracts.dll": {}
-        }
       }
     }
   },
@@ -140,33 +121,6 @@
         "lib/netstandard2.0/Microsoft.OpenApi.xml",
         "microsoft.openapi.1.2.3.nupkg.sha512",
         "microsoft.openapi.nuspec"
-      ]
-    },
-    "Newtonsoft.Json/13.0.1": {
-      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
-      "type": "package",
-      "path": "newtonsoft.json/13.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.md",
-        "lib/net20/Newtonsoft.Json.dll",
-        "lib/net20/Newtonsoft.Json.xml",
-        "lib/net35/Newtonsoft.Json.dll",
-        "lib/net35/Newtonsoft.Json.xml",
-        "lib/net40/Newtonsoft.Json.dll",
-        "lib/net40/Newtonsoft.Json.xml",
-        "lib/net45/Newtonsoft.Json.dll",
-        "lib/net45/Newtonsoft.Json.xml",
-        "lib/netstandard1.0/Newtonsoft.Json.dll",
-        "lib/netstandard1.0/Newtonsoft.Json.xml",
-        "lib/netstandard1.3/Newtonsoft.Json.dll",
-        "lib/netstandard1.3/Newtonsoft.Json.xml",
-        "lib/netstandard2.0/Newtonsoft.Json.dll",
-        "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "newtonsoft.json.13.0.1.nupkg.sha512",
-        "newtonsoft.json.nuspec",
-        "packageIcon.png"
       ]
     },
     "Swashbuckle.AspNetCore/5.6.3": {
@@ -231,17 +185,10 @@
         "swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
-    },
-    "Checkout.Payment.Gateway.Contracts/1.0.0": {
-      "type": "project",
-      "path": "../Checkout.Payment.Gatway.Contracts/Checkout.Payment.Gateway.Contracts.csproj",
-      "msbuildProject": "../Checkout.Payment.Gatway.Contracts/Checkout.Payment.Gateway.Contracts.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Checkout.Payment.Gateway.Contracts >= 1.0.0",
-      "Newtonsoft.Json >= 13.0.1",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -251,11 +198,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gateway.API.csproj",
-      "projectName": "Checkout.Payment.Gateway.API",
-      "projectPath": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gateway.API.csproj",
+      "projectUniqueName": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Bank.Stub\\Checkout.Payment.Bank.Stub.csproj",
+      "projectName": "Checkout.Payment.Bank.Stub",
+      "projectPath": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Bank.Stub\\Checkout.Payment.Bank.Stub.csproj",
       "packagesPath": "C:\\Users\\shay_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gateway.API\\obj\\",
+      "outputPath": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Bank.Stub\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\shay_\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -271,11 +218,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gatway.Contracts\\Checkout.Payment.Gateway.Contracts.csproj": {
-              "projectPath": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gatway.Contracts\\Checkout.Payment.Gateway.Contracts.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -288,10 +231,6 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
-          "Newtonsoft.Json": {
-            "target": "Package",
-            "version": "[13.0.1, )"
-          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[5.6.3, )"

@@ -1,7 +1,9 @@
 ﻿using Checkout.Payment.Gateway.API.Interfaces;
 using Checkout.Payment.Gateway.Contracts;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Checkout.Payment.Gateway.API.Processes
@@ -18,8 +20,20 @@ namespace Checkout.Payment.Gateway.API.Processes
 
         public async Task<BankResponse> SendPayment(PaymentDetails paymentDetails)
         {
-            return null;
-             //await _httpClient.GetAsync<BankResponse>();
+            var request = new HttpRequestMessage(HttpMethod.Get, _httpClient.BaseAddress)
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(paymentDetails), Encoding.UTF8,
+                    "application/json")
+            };
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+            return new BankResponse();
         }
     }
 }

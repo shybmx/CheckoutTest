@@ -29,3 +29,4 @@ C:\Users\shay_\Documents\GitHub\CheckoutTest\Checkout.Payment.Gateway.API\Checko
 C:\Users\shay_\Documents\GitHub\CheckoutTest\Checkout.Payment.Gateway.API\Checkout.Payment.Gateway.API\obj\Debug\net5.0\Checkout.Payment.Gateway.API.genruntimeconfig.cache
 C:\Users\shay_\Documents\GitHub\CheckoutTest\Checkout.Payment.Gateway.API\Checkout.Payment.Gateway.API\bin\Debug\net5.0\Checkout.Payment.Gateway.Contracts.dll
 C:\Users\shay_\Documents\GitHub\CheckoutTest\Checkout.Payment.Gateway.API\Checkout.Payment.Gateway.API\bin\Debug\net5.0\Checkout.Payment.Gateway.Contracts.pdb
+C:\Users\shay_\Documents\GitHub\CheckoutTest\Checkout.Payment.Gateway.API\Checkout.Payment.Gateway.API\bin\Debug\net5.0\Newtonsoft.Json.dll
