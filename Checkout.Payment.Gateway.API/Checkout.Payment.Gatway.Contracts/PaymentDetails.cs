@@ -1,0 +1,13 @@
+﻿using System;
+
+namespace Checkout.Payment.Gatway.Contracts
+{
+    public class PaymentDetails
+    {
+        public int CardNumber { get; set; }
+        public DateTime Expiry { get; set; }
+        public double Amount { get; set; }
+        public string Currency { get; set; }
+        public int Cvv { get; set; }
+    }
+}

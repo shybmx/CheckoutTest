@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Payment.Gateway.API", "Checkout.Payment.Gateway.API\Checkout.Payment.Gateway.API.csproj", "{0BFC001E-A37A-43B2-9068-5E69AB1020A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Payment.Gatway.Contracts", "Checkout.Payment.Gatway.Contracts\Checkout.Payment.Gatway.Contracts.csproj", "{AC6199C6-8FD2-45E8-BA01-0ED3C2CAB892}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0BFC001E-A37A-43B2-9068-5E69AB1020A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BFC001E-A37A-43B2-9068-5E69AB1020A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BFC001E-A37A-43B2-9068-5E69AB1020A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC6199C6-8FD2-45E8-BA01-0ED3C2CAB892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC6199C6-8FD2-45E8-BA01-0ED3C2CAB892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC6199C6-8FD2-45E8-BA01-0ED3C2CAB892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC6199C6-8FD2-45E8-BA01-0ED3C2CAB892}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
