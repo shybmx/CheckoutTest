@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gatway.Contracts\\Checkout.Payment.Gatway.Contracts.csproj",
-      "projectName": "Checkout.Payment.Gatway.Contracts",
-      "projectPath": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gatway.Contracts\\Checkout.Payment.Gatway.Contracts.csproj",
+      "projectUniqueName": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gatway.Contracts\\Checkout.Payment.Gateway.Contracts.csproj",
+      "projectName": "Checkout.Payment.Gateway.Contracts",
+      "projectPath": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gatway.Contracts\\Checkout.Payment.Gateway.Contracts.csproj",
       "packagesPath": "C:\\Users\\shay_\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gatway.Contracts\\obj\\",
       "projectStyle": "PackageReference",

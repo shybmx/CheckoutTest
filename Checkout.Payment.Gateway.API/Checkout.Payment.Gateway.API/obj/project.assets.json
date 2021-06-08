@@ -75,6 +75,16 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Checkout.Payment.Gateway.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Checkout.Payment.Gateway.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Checkout.Payment.Gateway.Contracts.dll": {}
+        }
       }
     }
   },
@@ -185,10 +195,16 @@
         "swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "Checkout.Payment.Gateway.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Checkout.Payment.Gatway.Contracts/Checkout.Payment.Gateway.Contracts.csproj",
+      "msbuildProject": "../Checkout.Payment.Gatway.Contracts/Checkout.Payment.Gateway.Contracts.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "Checkout.Payment.Gateway.Contracts >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -218,7 +234,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gatway.Contracts\\Checkout.Payment.Gateway.Contracts.csproj": {
+              "projectPath": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gatway.Contracts\\Checkout.Payment.Gateway.Contracts.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

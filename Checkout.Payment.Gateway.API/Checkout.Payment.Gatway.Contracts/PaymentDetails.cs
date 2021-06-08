@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Checkout.Payment.Gatway.Contracts
+namespace Checkout.Payment.Gateway.Contracts
 {
     public class PaymentDetails
     {

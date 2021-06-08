@@ -1,16 +1,13 @@
+using Checkout.Payment.Gateway.API.Interfaces;
+using Checkout.Payment.Gateway.API.Processes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Checkout.Payment.Gateway.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Checkout.Payment.Gateway.API
 {
@@ -26,12 +23,24 @@ namespace Checkout.Payment.Gateway.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Install(services);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Checkout.Payment.Gateway.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Checkout Payment Gatway", Version = "v1" });
             });
+        }
+
+        private void Install(IServiceCollection services)
+        {
+            InstallPaymentProcess(services);
+        }
+
+        private void InstallPaymentProcess(IServiceCollection services)
+        {
+            services.Configure<PaymentConfiguration>(Configuration.GetSection("Payment"));
+            services.AddSingleton<IPaymentProcess, PaymentProcess>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +50,7 @@ namespace Checkout.Payment.Gateway.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Checkout.Payment.Gateway.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Checkout Payment Gatway"));
             }
 
             app.UseHttpsRedirection();

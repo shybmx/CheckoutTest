@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qBgrZ1jlnfzJCv1refhmqTPV4d1MV35vF8b0I8ieXkmUaTHsP/7Gh7hamVTFtyHVCnCwgY++tGtQY7zmT95T5g==",
+  "dgSpecHash": "9srtNYC7khoeBxUD1tGElVhpuWzlBK2X8Vwe4J+9yhs/Bco4kIYYdCljEjMxH4O+DtpKhQJ79AFdfE+d34Rvww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gatway.Contracts\\Checkout.Payment.Gatway.Contracts.csproj",
+  "projectFilePath": "C:\\Users\\shay_\\Documents\\GitHub\\CheckoutTest\\Checkout.Payment.Gateway.API\\Checkout.Payment.Gatway.Contracts\\Checkout.Payment.Gateway.Contracts.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
