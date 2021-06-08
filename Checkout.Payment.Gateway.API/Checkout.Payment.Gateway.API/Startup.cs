@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Checkout.Payment.Gateway.Contracts;
+using System;
 
 namespace Checkout.Payment.Gateway.API
 {
@@ -33,7 +34,13 @@ namespace Checkout.Payment.Gateway.API
 
         private void Install(IServiceCollection services)
         {
+            InstallHttpWrapper(services);
             InstallPaymentProcess(services);
+        }
+
+        private void InstallHttpWrapper(IServiceCollection services)
+        {
+            services.AddSingleton<IHttpClientWrapper, HttpClientWrapper>();
         }
 
         private void InstallPaymentProcess(IServiceCollection services)

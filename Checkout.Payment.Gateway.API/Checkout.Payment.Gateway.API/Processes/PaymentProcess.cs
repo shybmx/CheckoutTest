@@ -11,23 +11,22 @@ namespace Checkout.Payment.Gateway.API.Processes
 {
     public class PaymentProcess : IPaymentProcess
     {
-        private HttpClient _httpClient;
+        private IHttpClientWrapper _httpClientWrapper;
 
         public PaymentProcess(PaymentConfiguration paymentConfig)
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri(paymentConfig.Endpoint);
+            
         }
 
         public async Task<BankResponse> SendPayment(PaymentDetails paymentDetails)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, _httpClient.BaseAddress)
+            /*var request = new HttpRequestMessage(HttpMethod.Post, _httpClient.BaseAddress)
             {
                 Content = new StringContent(JsonConvert.SerializeObject(paymentDetails), Encoding.UTF8,
                     "application/json")
             };
 
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.SendAsync(request);*/
 
             if (!response.IsSuccessStatusCode)
             {
