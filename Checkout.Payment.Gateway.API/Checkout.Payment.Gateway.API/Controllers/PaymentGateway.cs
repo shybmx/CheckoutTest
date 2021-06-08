@@ -14,6 +14,8 @@ namespace Checkout.Payment.Gateway.API.Controllers
                 return new BadRequestObjectResult("Invalid Query");
             }
 
+
+
             return null;
         }
     }
