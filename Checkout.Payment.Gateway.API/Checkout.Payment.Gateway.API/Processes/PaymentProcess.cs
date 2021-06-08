@@ -5,6 +5,7 @@ using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Checkout.Payment.Gateway.API.Processes
 {
@@ -33,7 +34,9 @@ namespace Checkout.Payment.Gateway.API.Processes
                 return null;
             }
 
-            return new BankResponse();
+            var bankResponse = JsonConvert.DeserializeObject<BankResponse>(await response.Content.ReadAsStringAsync());
+
+            return bankResponse;
         }
     }
 }
