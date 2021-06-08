@@ -1,6 +1,7 @@
 ﻿using Checkout.Payment.Gateway.API.Interfaces;
 using Checkout.Payment.Gateway.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace Checkout.Payment.Gateway.API.Controllers
@@ -28,10 +29,19 @@ namespace Checkout.Payment.Gateway.API.Controllers
 
             if (details != null)
             {
-                return new OkObjectResult("");
+                return new OkObjectResult(details);
             }
 
             return new NotFoundObjectResult("");
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetPaymentDetails([FromQuery] Guid identifer)
+        {
+            var paymentDetails = await _paymentProcess.GetPaymentDetails(identifer);
+
+            return new OkObjectResult(paymentDetails);
         }
     }
 }

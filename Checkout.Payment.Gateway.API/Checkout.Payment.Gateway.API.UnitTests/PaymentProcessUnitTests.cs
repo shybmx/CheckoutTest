@@ -17,6 +17,8 @@ namespace Checkout.Payment.Gateway.API.UnitTests
 {
     public class PaymentProcessUnitTests
     {
+        //TODO: Finish the unit test here
+
         private IPaymentProcess _paymentProcess;
         private Mock<IHttpClientWrapper> _httpClientWrapperMock;
         private PaymentDetails _paymentDetails;
@@ -58,8 +60,35 @@ namespace Checkout.Payment.Gateway.API.UnitTests
             var actual = await _paymentProcess.SendPayment(_paymentDetails);
 
             Assert.IsNotNull(actual);
+            Assert.That(actual.PaymentSuccessful, Is.EqualTo(_bankResponse.PaymentSuccessful));
         }
 
-        
+        [Test]
+        public async Task Given_Invalid_Payment_Process_Should_Return_Null()
+        {
+            _httpClientWrapperMock.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>())).ReturnsAsync(
+                new HttpResponseMessage { StatusCode = HttpStatusCode.OK });
+
+            var actual = await _paymentProcess.SendPayment(null);
+
+            Assert.IsNull(actual);
+        }
+
+        [Test]
+        public async Task Given_Valid_Payment_Process_But_API_Call_Fails_Should_Throw_Exception()
+        {
+            _httpClientWrapperMock.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>())).Throws(new Exception());
+
+            Assert.ThrowsAsync<Exception>(() => _paymentProcess.SendPayment(_paymentDetails));
+        }
+
+        [Test]
+        public async Task Given_Valid_Payment_Process_But_Json_Cannot_Deserialize_Should_Throw_Json_Exception()
+        {
+            _httpClientWrapperMock.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>())).ReturnsAsync(
+                new HttpResponseMessage { StatusCode = HttpStatusCode.OK, Content = new StringContent("test") });
+
+            Assert.ThrowsAsync<Exception>(() => _paymentProcess.SendPayment(_paymentDetails));
+        }
     }
 }

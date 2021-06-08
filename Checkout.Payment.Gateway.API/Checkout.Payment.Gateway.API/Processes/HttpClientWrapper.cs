@@ -17,6 +17,7 @@ namespace Checkout.Payment.Gateway.API.Processes
 
         public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
         {
+            //TODO: add a curcit breaker
             return _client.Send(request);
         }
 

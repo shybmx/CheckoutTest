@@ -34,7 +34,7 @@ namespace Checkout.Payment.Bank.Stub.Controllers
         }
 
         [HttpPost("getDetails")]
-        public async Task<IActionResult> GetPurchase([FromBody] Guid paymentGuid)
+        public async Task<IActionResult> GetPurchaseDetails([FromBody] Guid paymentGuid)
         {
             await CreateCosmosConnection();
 

@@ -333,3 +333,6 @@ ASALocalRun/
 Ansible.Dockerfile
 Checkout.Payment.Gateway.API/.vs/Checkout.Payment.Gateway.API/v16/.suo
 *.dll
+*.dll
+Checkout.Payment.Gateway.API/.vs/Checkout.Payment.Gateway.API/v16/.suo
+*.pdb
