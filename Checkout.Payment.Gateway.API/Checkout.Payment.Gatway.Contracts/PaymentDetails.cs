@@ -11,6 +11,6 @@ namespace Checkout.Payment.Gateway.Contracts
         public double Amount { get; set; }
         public string Currency { get; set; }
         public int Cvv { get; set; }
-        public Guid Identifier => new Guid();
+        public Guid Identifier { get; set; }
     }
 }
