@@ -1,0 +1,83 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Checkout.Payment.Bank.Stub",
+    "version": "v1"
+  },
+  "paths": {
+    "/Banking/executePurchase": {
+      "get": {
+        "tags": [
+          "BankStub"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "CardNumber",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "Expiry",
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "in": "query",
+            "name": "Amount",
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "in": "query",
+            "name": "Currency",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "Cvv",
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "query",
+            "name": "Identifier",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Banking/getDetails": {
+      "get": {
+        "tags": [
+          "BankStub"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "paymentGuid",
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}
