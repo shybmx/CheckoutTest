@@ -16,8 +16,8 @@ namespace Checkout.Payment.Bank.Stub.Controllers
         private Database _database;
         private Container _container;
 
-        [HttpGet("executePurchase")]
-        public async Task<IActionResult> BankExecutePurchase([FromQuery] PaymentDetails paymentDetails)
+        [HttpPost("executePurchase")]
+        public async Task<IActionResult> BankExecutePurchase([FromBody] PaymentDetails paymentDetails)
         {
             await CreateCosmosConnection();
 
@@ -33,8 +33,8 @@ namespace Checkout.Payment.Bank.Stub.Controllers
             }
         }
 
-        [HttpGet("getDetails")]
-        public async Task<IActionResult> GetPurchase([FromQuery] Guid paymentGuid)
+        [HttpPost("getDetails")]
+        public async Task<IActionResult> GetPurchase([FromBody] Guid paymentGuid)
         {
             await CreateCosmosConnection();
 

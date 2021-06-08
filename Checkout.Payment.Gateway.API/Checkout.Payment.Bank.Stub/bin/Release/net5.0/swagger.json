@@ -6,50 +6,22 @@
   },
   "paths": {
     "/Banking/executePurchase": {
-      "get": {
+      "post": {
         "tags": [
           "BankStub"
         ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
         "parameters": [
           {
-            "in": "query",
-            "name": "id",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "CardNumber",
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "in": "query",
-            "name": "Expiry",
-            "type": "string",
-            "format": "date-time"
-          },
-          {
-            "in": "query",
-            "name": "Amount",
-            "type": "number",
-            "format": "double"
-          },
-          {
-            "in": "query",
-            "name": "Currency",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "Cvv",
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "in": "query",
-            "name": "Identifier",
-            "type": "string",
-            "format": "uuid"
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PaymentDetails"
+            }
           }
         ],
         "responses": {
@@ -60,22 +32,63 @@
       }
     },
     "/Banking/getDetails": {
-      "get": {
+      "post": {
         "tags": [
           "BankStub"
         ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
         "parameters": [
           {
-            "in": "query",
-            "name": "paymentGuid",
-            "type": "string",
-            "format": "uuid"
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "Success"
           }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PaymentDetails": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true
+        },
+        "cardNumber": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "expiry": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "amount": {
+          "format": "double",
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "cvv": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "identifier": {
+          "format": "uuid",
+          "type": "string"
         }
       }
     }
