@@ -48,7 +48,7 @@ namespace Checkout.Payment.Gateway.API
             var paymentConfiguration = new PaymentConfiguration();
             Configuration.GetSection("Payment").Bind(paymentConfiguration);
 
-            services.AddSingleton<IPaymentProcess, PaymentProcess>(c => new PaymentProcess(paymentConfiguration));
+            services.AddSingleton<IPaymentProcess, PaymentProcess>(c => new PaymentProcess(paymentConfiguration, new HttpClientWrapper()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

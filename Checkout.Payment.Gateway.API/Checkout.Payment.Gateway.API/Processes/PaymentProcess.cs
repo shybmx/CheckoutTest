@@ -11,12 +11,13 @@ namespace Checkout.Payment.Gateway.API.Processes
 {
     public class PaymentProcess : IPaymentProcess
     {
-        private IHttpClientWrapper _httpClientWrapper;
+        private readonly IHttpClientWrapper _httpClientWrapper;
         private PaymentConfiguration _paymentConfig;
 
-        public PaymentProcess(PaymentConfiguration paymentConfig)
+        public PaymentProcess(PaymentConfiguration paymentConfig, IHttpClientWrapper httpClientWrapper)
         {
             _paymentConfig = paymentConfig;
+            _httpClientWrapper = httpClientWrapper;
         }
 
         public async Task<BankResponse> SendPayment(PaymentDetails paymentDetails)
@@ -27,16 +28,22 @@ namespace Checkout.Payment.Gateway.API.Processes
                     "application/json")
             };
 
-            var response = await _httpClientWrapper.SendAsync(request);
-
-            if (!response.IsSuccessStatusCode)
+            try
             {
-                return null;
+                var response = await _httpClientWrapper.SendAsync(request);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+
+                var bankResponse = JsonConvert.DeserializeObject<BankResponse>(await response.Content.ReadAsStringAsync());
+
+                return bankResponse;
+            }catch(Exception e)
+            {
+                throw new Exception(e.Message);
             }
-
-            var bankResponse = JsonConvert.DeserializeObject<BankResponse>(await response.Content.ReadAsStringAsync());
-
-            return bankResponse;
         }
     }
 }
