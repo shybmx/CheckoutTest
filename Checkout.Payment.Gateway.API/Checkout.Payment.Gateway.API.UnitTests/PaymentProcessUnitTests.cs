@@ -5,7 +5,9 @@ using Checkout.Payment.Gateway.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Moq.Protected;
+using Newtonsoft.Json;
 using NUnit.Framework;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -18,6 +20,7 @@ namespace Checkout.Payment.Gateway.API.UnitTests
         private IPaymentProcess _paymentProcess;
         private Mock<IHttpClientWrapper> _httpClientWrapperMock;
         private PaymentDetails _paymentDetails;
+        private BankResponse _bankResponse;
 
         [SetUp]
         public void Setup()
@@ -25,7 +28,14 @@ namespace Checkout.Payment.Gateway.API.UnitTests
             var paymentConfig = new PaymentConfiguration {
                 Endpoint = "https://www.test.com/"
             };
-                _paymentDetails = new PaymentDetails
+
+            _bankResponse = new BankResponse()
+            {
+                Identifier = Guid.NewGuid(),
+                PaymentSuccessful = true
+            };
+
+            _paymentDetails = new PaymentDetails
             {
                 CardNumber = TestConstant.CardNumber,
                 Currency = TestConstant.Currency,
@@ -43,8 +53,7 @@ namespace Checkout.Payment.Gateway.API.UnitTests
         public async Task Given_Valid_Payment_Process_Should_Return_Correct_Object()
         {
             _httpClientWrapperMock.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>())).ReturnsAsync(
-                new HttpResponseMessage { StatusCode = HttpStatusCode.OK, Content = new StringContent("4")}
-                );
+                new HttpResponseMessage { StatusCode = HttpStatusCode.OK, Content = new StringContent(JsonConvert.SerializeObject(_bankResponse))});
 
             var actual = await _paymentProcess.SendPayment(_paymentDetails);
 
