@@ -32,7 +32,7 @@ namespace Checkout.Payment.Gateway.API.Processes
             {
                 var response = await _httpClientWrapper.SendAsync(request);
 
-                if (!response.IsSuccessStatusCode)
+                if (response == null || !response.IsSuccessStatusCode)
                 {
                     return null;
                 }
