@@ -5,6 +5,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <ActiveDebugProfile>Checkout.Payment.Bank.Stub</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>CheckoutPaymentBankStub20210608162830 - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>CheckoutPaymentBankStub - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
