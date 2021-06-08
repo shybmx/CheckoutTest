@@ -42,9 +42,11 @@ namespace Checkout.Payment.Gateway.API.UnitTests
         [Test] 
         public async Task Given_Valid_Payment_Process_Should_Return_Correct_Object()
         {
-            var actual = await _paymentProcess.SendPayment(_paymentDetails);
+            _httpClientWrapperMock.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>())).ReturnsAsync(
+                new HttpResponseMessage { StatusCode = HttpStatusCode.OK, Content = new StringContent("4")}
+                );
 
-            _httpClientWrapperMock.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>())).ReturnsAsync(new HttpResponseMessage { StatusCode = HttpStatusCode.OK, Content = new StringContent("4")});
+            var actual = await _paymentProcess.SendPayment(_paymentDetails);
 
             Assert.IsNotNull(actual);
         }
