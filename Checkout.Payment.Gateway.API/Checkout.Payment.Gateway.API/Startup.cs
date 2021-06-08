@@ -38,10 +38,8 @@ namespace Checkout.Payment.Gateway.API
 
         private void InstallPaymentProcess(IServiceCollection services)
         {
-            services.Configure<PaymentConfiguration>(Configuration.GetSection("Payment"));
-
-            var builder = services.BuildServiceProvider();
-            var paymentConfiguration  = builder.GetService<PaymentConfiguration>();
+            var paymentConfiguration = new PaymentConfiguration();
+            Configuration.GetSection("Payment").Bind(paymentConfiguration);
 
             services.AddSingleton<IPaymentProcess, PaymentProcess>(c => new PaymentProcess(paymentConfiguration));
         }
