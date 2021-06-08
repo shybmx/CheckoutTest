@@ -65,7 +65,5 @@ namespace Checkout.Payment.Gateway.API.UnitTests
 
             Assert.That(actual.GetType, Is.EqualTo(typeof(NotFoundObjectResult)));
         }
-
-
     }
 }

@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Checkout.Payment.Gateway.Contracts;
-using System;
 
 namespace Checkout.Payment.Gateway.API
 {
@@ -40,7 +39,11 @@ namespace Checkout.Payment.Gateway.API
         private void InstallPaymentProcess(IServiceCollection services)
         {
             services.Configure<PaymentConfiguration>(Configuration.GetSection("Payment"));
-            services.AddSingleton<IPaymentProcess, PaymentProcess>();
+
+            var builder = services.BuildServiceProvider();
+            var paymentConfiguration  = builder.GetService<PaymentConfiguration>();
+
+            services.AddSingleton<IPaymentProcess, PaymentProcess>(c => new PaymentProcess(paymentConfiguration));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
