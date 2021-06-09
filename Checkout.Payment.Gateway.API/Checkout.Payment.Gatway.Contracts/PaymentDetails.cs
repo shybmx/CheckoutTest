@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Checkout.Payment.Gateway.Contracts
 {
@@ -7,15 +8,19 @@ namespace Checkout.Payment.Gateway.Contracts
     {
         //This Id is for cosmos DB
         public string id => Identifier.ToString();
-        [JsonProperty(Required = Required.Always)]
+        [Required]
+        [Range(11111111111111, 99999999999999)]
         public long CardNumber { get; set; }
-        [JsonProperty(Required = Required.Always)]
+        [Required]
         public DateTime Expiry { get; set; }
-        [JsonProperty(Required = Required.Always)]
+        [Required]
+        [Range(0.1, 999999.99)]
         public double Amount { get; set; }
-        [JsonProperty(Required = Required.Always)]
+        [Required]
+        [StringLength(5)]
         public string Currency { get; set; }
-        [JsonProperty(Required = Required.Always)]
+        [Required]
+        [Range(100,999)]
         public int Cvv { get; set; }
         public Guid Identifier { get; set; }
     }

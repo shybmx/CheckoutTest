@@ -22,7 +22,7 @@ namespace Checkout.Payment.Gateway.API.Controllers
         [HttpGet("ProcessPayment")]
         public async Task<IActionResult> ProcessPayment([FromQuery] PaymentDetails paymentDetails)
         {
-            if(paymentDetails == null)
+            if(paymentDetails == null || !ModelState.IsValid)
             {
                 return new BadRequestObjectResult("Invalid Query");
             }
