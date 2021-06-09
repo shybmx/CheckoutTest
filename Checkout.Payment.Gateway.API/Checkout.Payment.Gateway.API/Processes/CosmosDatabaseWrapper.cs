@@ -1,6 +1,7 @@
 ﻿using Checkout.Payment.Gateway.API.Interfaces;
 using Checkout.Payment.Gateway.Contracts;
 using Microsoft.Azure.Cosmos;
+using System;
 using System.Threading.Tasks;
 
 namespace Checkout.Payment.Gateway.API.Processes
@@ -23,9 +24,24 @@ namespace Checkout.Payment.Gateway.API.Processes
             await _cosmosContainer.CreateItemAsync<T>(itemToSend, new PartitionKey(partitionKey));
         }
 
-        public FeedIterator<T> GetItemAsync<T>(QueryDefinition queryDefinition)
+        public async Task<T> GetItemAsync<T>(Guid indentifer)
         {
-            return _cosmosContainer.GetItemQueryIterator<T>(queryDefinition);
+            var sqlQueryText = $"SELECT * FROM c WHERE c.id = '{indentifer}'";
+
+            var queryDefinition = new QueryDefinition(sqlQueryText);
+
+            var queryResultSetIterator = _cosmosContainer.GetItemQueryIterator<T>(queryDefinition);
+
+            while (queryResultSetIterator.HasMoreResults)
+            {
+                var items = await queryResultSetIterator.ReadNextAsync();
+                foreach (var item in items)
+                {
+                    return item;
+                }
+            }
+
+            return default;
         }
     }
 }

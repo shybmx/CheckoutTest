@@ -1,6 +1,5 @@
 ﻿using Checkout.Payment.Gateway.API.Interfaces;
 using Checkout.Payment.Gateway.Contracts;
-using Microsoft.Azure.Cosmos;
 using System;
 using System.Threading.Tasks;
 
@@ -17,20 +16,9 @@ namespace Checkout.Payment.Gateway.API.Processes
 
         public async Task<SavedPaymentDetails> GetPaymentDetails(Guid indentifer)
         {
-            var sqlQueryText = $"SELECT * FROM c WHERE c.id = '{indentifer}'";
-
             try
             {
-                var queryDefinition = new QueryDefinition(sqlQueryText);
-                var queryResultSetIterator = _cosmosDatabaseWrapper.GetItemAsync<SavedPaymentDetails>(queryDefinition);
-                while (queryResultSetIterator.HasMoreResults)
-                {
-                    var items = await queryResultSetIterator.ReadNextAsync();
-                    foreach (var item in items)
-                    {
-                        return item;
-                    }
-                }
+                return await _cosmosDatabaseWrapper.GetItemAsync<SavedPaymentDetails>(indentifer);
             }
             catch (Exception e)
             {
@@ -42,6 +30,11 @@ namespace Checkout.Payment.Gateway.API.Processes
 
         public async Task SavePaymentDetails(PaymentDetails paymentDetails, BankResponse bankResponse)
         {
+            if(paymentDetails == null || bankResponse == null)
+            {
+                return;
+            }
+
             var savedPaymentDetails = new SavedPaymentDetails
             {
                 Amount = paymentDetails.Amount,
