@@ -1,6 +1,4 @@
 ﻿using Checkout.Payment.Gateway.API.Interfaces;
-using Checkout.Payment.Gateway.Contracts;
-using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
