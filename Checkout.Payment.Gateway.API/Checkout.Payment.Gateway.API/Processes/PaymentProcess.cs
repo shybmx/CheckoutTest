@@ -1,6 +1,8 @@
 ﻿using Checkout.Payment.Gateway.API.Interfaces;
 using Checkout.Payment.Gateway.Contracts;
 using Newtonsoft.Json;
+using Polly;
+using Polly.Retry;
 using System;
 using System.Net.Http;
 using System.Text;
@@ -12,11 +14,13 @@ namespace Checkout.Payment.Gateway.API.Processes
     {
         private readonly IHttpClientWrapper _httpClientWrapper;
         private PaymentConfiguration _paymentConfig;
+        private AsyncRetryPolicy _retryPolicy;
 
         public PaymentProcess(PaymentConfiguration paymentConfig, IHttpClientWrapper httpClientWrapper)
         {
             _paymentConfig = paymentConfig;
             _httpClientWrapper = httpClientWrapper;
+            _retryPolicy = Policy.Handle<HttpRequestException>().WaitAndRetryAsync(new[] { TimeSpan.FromMilliseconds(500) });
         }
 
         public async Task<BankResponse> SendPayment(PaymentDetails paymentDetails)
@@ -28,7 +32,7 @@ namespace Checkout.Payment.Gateway.API.Processes
 
             try
             {
-                var response = await _httpClientWrapper.SendAsync(request);
+                var response = await _retryPolicy.ExecuteAsync(() => _httpClientWrapper.SendAsync(request));
 
                 if (response == null || !response.IsSuccessStatusCode)
                 {
@@ -54,7 +58,7 @@ namespace Checkout.Payment.Gateway.API.Processes
 
             try
             {
-                var response = await _httpClientWrapper.SendAsync(request);
+                var response = await _retryPolicy.ExecuteAsync(() => _httpClientWrapper.SendAsync(request));
 
                 if (response == null || !response.IsSuccessStatusCode)
                 {
