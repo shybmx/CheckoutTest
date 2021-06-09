@@ -9,3 +9,4 @@ C:\Users\shay_\Documents\GitHub\CheckoutTest\Checkout.Payment.Gateway.API\Checko
 C:\Users\shay_\Documents\GitHub\CheckoutTest\Checkout.Payment.Gateway.API\Checkout.Payment.Gatway.Contracts\obj\Debug\net5.0\Checkout.Payment.Gateway.Contracts.dll
 C:\Users\shay_\Documents\GitHub\CheckoutTest\Checkout.Payment.Gateway.API\Checkout.Payment.Gatway.Contracts\obj\Debug\net5.0\ref\Checkout.Payment.Gateway.Contracts.dll
 C:\Users\shay_\Documents\GitHub\CheckoutTest\Checkout.Payment.Gateway.API\Checkout.Payment.Gatway.Contracts\obj\Debug\net5.0\Checkout.Payment.Gateway.Contracts.pdb
+C:\Users\shay_\Documents\GitHub\CheckoutTest\Checkout.Payment.Gateway.API\Checkout.Payment.Gatway.Contracts\obj\Debug\net5.0\Checkout.Payment.Gateway.Contracts.csprojAssemblyReference.cache

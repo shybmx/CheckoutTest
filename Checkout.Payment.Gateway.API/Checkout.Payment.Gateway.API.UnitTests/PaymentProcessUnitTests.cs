@@ -1,24 +1,18 @@
-﻿using Checkout.Payment.Gateway.API.Controllers;
-using Checkout.Payment.Gateway.API.Interfaces;
+﻿using Checkout.Payment.Gateway.API.Interfaces;
 using Checkout.Payment.Gateway.API.Processes;
 using Checkout.Payment.Gateway.Contracts;
-using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Moq.Protected;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Net;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Checkout.Payment.Gateway.API.UnitTests
 {
     public class PaymentProcessUnitTests
     {
-        //TODO: Finish the unit test here
-
         private IPaymentProcess _paymentProcess;
         private Mock<IHttpClientWrapper> _httpClientWrapperMock;
         private PaymentDetails _paymentDetails;
@@ -90,5 +84,17 @@ namespace Checkout.Payment.Gateway.API.UnitTests
 
             Assert.ThrowsAsync<Exception>(() => _paymentProcess.SendPayment(_paymentDetails));
         }
+
+        [Test]
+        public async Task Given_Valid_Guid_Should_Return_Payment_Details()
+        {
+            _httpClientWrapperMock.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>())).ReturnsAsync(
+            new HttpResponseMessage { StatusCode = HttpStatusCode.OK, Content = new StringContent(JsonConvert.SerializeObject(_paymentDetails)) });
+
+            var actual = await _paymentProcess.GetPaymentDetails(Guid.NewGuid());
+
+            Assert.IsNotNull(actual);
+        }
+        //TODO: Finish tests
     }
 }

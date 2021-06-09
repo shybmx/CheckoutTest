@@ -36,12 +36,12 @@ namespace Checkout.Payment.Gateway.API.Controllers
         }
 
 
-        [HttpGet]
+  /*      [HttpGet]
         public async Task<IActionResult> GetPaymentDetails([FromQuery] Guid identifer)
         {
             var paymentDetails = await _paymentProcess.GetPaymentDetails(identifer);
 
             return new OkObjectResult(paymentDetails);
-        }
+        }*/
     }
 }
