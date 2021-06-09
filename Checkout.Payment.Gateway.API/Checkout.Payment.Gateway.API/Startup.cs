@@ -44,7 +44,8 @@ namespace Checkout.Payment.Gateway.API
             var cosmosConfiguration = new CosmosConfiguration();
             Configuration.GetSection("Cosmos").Bind(cosmosConfiguration);
 
-            services.AddSingleton<ICosmosDatabaseClient, CosmosDatabaseClient>(c => new CosmosDatabaseClient(cosmosConfiguration));
+            services.AddSingleton<ICosmosDatabaseWrapper<SavedPaymentDetails>, CosmosDatabaseWrapper<SavedPaymentDetails>>(c => new CosmosDatabaseWrapper<SavedPaymentDetails>(cosmosConfiguration));
+            services.AddSingleton<ICosmosDatabaseClient, CosmosDatabaseClient>();
         }
 
         private void InstallHttpWrapper(IServiceCollection services)

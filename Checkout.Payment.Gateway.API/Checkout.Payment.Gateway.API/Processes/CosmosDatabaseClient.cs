@@ -8,15 +8,11 @@ namespace Checkout.Payment.Gateway.API.Processes
 {
     public class CosmosDatabaseClient : ICosmosDatabaseClient 
     {
-        private CosmosClient _cosmosClient;
-        private Database _cosmosDatabase;
-        private Container _cosmosContainer; 
+        private ICosmosDatabaseWrapper<SavedPaymentDetails> _cosmosDatabaseWrapper;
 
-        public CosmosDatabaseClient(CosmosConfiguration cosmosConfig)
+        public CosmosDatabaseClient(ICosmosDatabaseWrapper<SavedPaymentDetails> cosmosDatabaseWrapper)
         {
-            _cosmosClient = new CosmosClient(cosmosConfig.EndpointUri, cosmosConfig.PrimaryKey);
-            _cosmosDatabase = _cosmosClient.CreateDatabaseIfNotExistsAsync(cosmosConfig.DatabaseName).Result;
-            _cosmosContainer = _cosmosDatabase.CreateContainerIfNotExistsAsync(cosmosConfig.ContainerName, cosmosConfig.PartitonKey).Result;
+            _cosmosDatabaseWrapper = cosmosDatabaseWrapper;
         }
 
         public async Task<SavedPaymentDetails> GetPaymentDetails(Guid indentifer)
@@ -26,7 +22,7 @@ namespace Checkout.Payment.Gateway.API.Processes
             try
             {
                 var queryDefinition = new QueryDefinition(sqlQueryText);
-                var queryResultSetIterator = _cosmosContainer.GetItemQueryIterator<SavedPaymentDetails>(queryDefinition);
+                var queryResultSetIterator = _cosmosDatabaseWrapper.GetItemAsync<SavedPaymentDetails>(queryDefinition);
                 while (queryResultSetIterator.HasMoreResults)
                 {
                     var items = await queryResultSetIterator.ReadNextAsync();
@@ -59,7 +55,7 @@ namespace Checkout.Payment.Gateway.API.Processes
 
             try
             {
-                await _cosmosContainer.CreateItemAsync<SavedPaymentDetails>(savedPaymentDetails, new PartitionKey(savedPaymentDetails.Currency));
+                await _cosmosDatabaseWrapper.CreateItemAsync<SavedPaymentDetails>(savedPaymentDetails, savedPaymentDetails.Currency);
             }catch(Exception e)
             {
                 throw new Exception(e.Message);
