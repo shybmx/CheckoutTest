@@ -21,7 +21,7 @@ namespace Checkout.Payment.Gateway.API.Processes
 
         public async Task<BankResponse> SendPayment(PaymentDetails paymentDetails)
         {
-            var request = BuildHttpRequest("/BankExecutePurchase");
+            var request = BuildHttpRequest("/Banking/executePurchase");
 
             request.Content = new StringContent(JsonConvert.SerializeObject(paymentDetails), Encoding.UTF8,
                     "application/json");

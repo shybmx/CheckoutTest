@@ -7,10 +7,13 @@ namespace Checkout.Payment.Gateway.Contracts
     public class PaymentDetails
     {
         //This Id is for cosmos DB
-        public string id => Identifier.ToString();
+        [JsonProperty(PropertyName = "id")]
+        private string Id => Identifier.ToString();
         [Required]
         [Range(11111111111111, 99999999999999)]
         public long CardNumber { get; set; }
+        [Required]
+        public string NameOnCard { get; set; }
         [Required]
         public DateTime Expiry { get; set; }
         [Required]

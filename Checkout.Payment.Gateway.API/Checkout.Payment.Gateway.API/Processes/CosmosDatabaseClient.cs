@@ -24,8 +24,6 @@ namespace Checkout.Payment.Gateway.API.Processes
             {
                 throw new Exception(e.Message);
             }
-
-            return null;
         }
 
         public async Task SavePaymentDetails(PaymentDetails paymentDetails, BankResponse bankResponse)
@@ -42,8 +40,8 @@ namespace Checkout.Payment.Gateway.API.Processes
                 Currency = paymentDetails.Currency,
                 Cvv = paymentDetails.Cvv,
                 Expiry = paymentDetails.Expiry,
-                Identifier = bankResponse.Identifier,
-                IsSuccessful = bankResponse.PaymentSuccessful
+                IsSuccessful = bankResponse.PaymentSuccessful,
+                Identifier = paymentDetails.Identifier
             };
 
             try

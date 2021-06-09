@@ -8,6 +8,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Checkout.Payment.Gateway.Contracts;
 using System;
+using Microsoft.Extensions.Logging;
+using Polly;
 
 namespace Checkout.Payment.Gateway.API
 {

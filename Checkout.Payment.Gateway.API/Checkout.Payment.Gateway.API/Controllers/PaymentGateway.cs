@@ -1,6 +1,7 @@
 ﻿using Checkout.Payment.Gateway.API.Interfaces;
 using Checkout.Payment.Gateway.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
@@ -26,6 +27,8 @@ namespace Checkout.Payment.Gateway.API.Controllers
             {
                 return new BadRequestObjectResult("Invalid Query");
             }
+
+            paymentDetails.Identifier = Guid.NewGuid();
 
             var details = await _paymentProcess.SendPayment(paymentDetails);
 

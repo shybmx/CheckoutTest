@@ -1,4 +1,5 @@
 ﻿using Checkout.Payment.Gateway.API.Interfaces;
+using Polly;
 using System.Net.Http;
 using System.Threading.Tasks;
 
