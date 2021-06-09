@@ -12,12 +12,12 @@ namespace Checkout.Payment.Bank.Stub.Controllers
         [HttpPost("executePurchase")]
         public async Task<IActionResult> BankExecutePurchase([FromBody] PaymentDetails paymentDetails)
         {
-            var isSuccessful = false;
+            var isSuccessful = true;
 
             var randomNumber = new Random();
-            if(randomNumber.Next(0, 100) % 0 == 0)
+            if(randomNumber.Next(0, 100) % 3 == 0)
             {
-                isSuccessful = true;
+                isSuccessful = false;
             }
 
             return new OkObjectResult(new BankResponse { Identifier = paymentDetails.Identifier, PaymentSuccessful = isSuccessful });

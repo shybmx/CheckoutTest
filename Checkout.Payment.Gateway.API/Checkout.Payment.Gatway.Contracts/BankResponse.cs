@@ -1,5 +1,5 @@
 ﻿using System;
-
+ 
 namespace Checkout.Payment.Gateway.Contracts
 {
     public class BankResponse
