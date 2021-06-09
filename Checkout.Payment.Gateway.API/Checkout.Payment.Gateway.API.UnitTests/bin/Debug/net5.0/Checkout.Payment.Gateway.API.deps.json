@@ -548,6 +548,9 @@
       "System.Threading.Tasks.Extensions/4.5.4": {},
       "System.ValueTuple/4.5.0": {},
       "Checkout.Payment.Gateway.Contracts/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
         "runtime": {
           "Checkout.Payment.Gateway.Contracts.dll": {}
         },

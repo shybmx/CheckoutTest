@@ -29,10 +29,9 @@ namespace Checkout.Payment.Gateway.API.Controllers
 
             var details = await _paymentProcess.SendPayment(paymentDetails);
 
-            await _cosmosDatabaseClient.SavePaymentDetails(paymentDetails, details);
-
             if (details != null)
             {
+                await _cosmosDatabaseClient.SavePaymentDetails(paymentDetails, details);
                 return new OkObjectResult(details);
             }
 
