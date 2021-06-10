@@ -54,6 +54,17 @@
           }
         }
       },
+      "JsonMasking/1.2.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/JsonMasking.dll": {
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
+          }
+        }
+      },
       "Microsoft.Azure.Cosmos/3.19.0": {
         "dependencies": {
           "Azure.Core": "1.3.0",
@@ -1041,6 +1052,7 @@
       "Checkout.Payment.Gateway.API/1.0.0": {
         "dependencies": {
           "Checkout.Payment.Gateway.Contracts": "1.0.0",
+          "JsonMasking": "1.2.0",
           "Microsoft.Azure.Cosmos": "3.19.0",
           "Microsoft.Extensions.Logging": "5.0.0",
           "Newtonsoft.Json": "13.0.1",
@@ -1080,6 +1092,13 @@
       "sha512": "sha512-b5rRL5zeaau1y/5hIbI+6mGw3cwun16YjkHZnV9RRT5UyUIFsgLmNXJ0YnIN9p8Hw7K7AbG1q1UclQVU3DinAQ==",
       "path": "castle.core/4.4.0",
       "hashPath": "castle.core.4.4.0.nupkg.sha512"
+    },
+    "JsonMasking/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AsqJIRlRFYacStGKL6+3y9dWSve/zQpc2HFHPNnhgzyQIApQ6j5EQATOloBRSGx4kHmfFxtoTQfmRPETw30OCA==",
+      "path": "jsonmasking/1.2.0",
+      "hashPath": "jsonmasking.1.2.0.nupkg.sha512"
     },
     "Microsoft.Azure.Cosmos/3.19.0": {
       "type": "package",

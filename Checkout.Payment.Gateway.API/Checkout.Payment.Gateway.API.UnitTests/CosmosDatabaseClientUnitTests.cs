@@ -80,7 +80,9 @@ namespace Checkout.Payment.Gateway.API.UnitTests
 
             var actual = await _cosmosDatabaseClient.GetPaymentDetails(Guid.NewGuid());
 
-            Assert.AreSame(actual, _savedPaymentDetails);
+            Assert.That(actual.NameOnCard, Is.EqualTo(_savedPaymentDetails.NameOnCard));
+            Assert.That(actual.Amount, Is.EqualTo(_savedPaymentDetails.Amount));
+            Assert.That(actual.Expiry, Is.EqualTo(_savedPaymentDetails.Expiry));
         }
 
         [Test]
@@ -100,5 +102,26 @@ namespace Checkout.Payment.Gateway.API.UnitTests
 
             Assert.ThrowsAsync<Exception>(() => _cosmosDatabaseClient.GetPaymentDetails(It.IsAny<Guid>()));
         }
+
+        [TestCase(2348723423483435334, "***5334")]
+        [TestCase(23213231, "****3231")]
+        [TestCase(123, "")]
+        [TestCase(1242, "")]
+        public void Given_Card_Number_Should_Mask(long cardNumber, string expected)
+        {
+            var actual = _cosmosDatabaseClient.MaskCardNumber(new SavedPaymentDetails() { CardNumber = cardNumber});
+
+            Assert.That(actual.Contains(expected));
+        }
+
+        [TestCase(123, "**3")]
+        [TestCase(12, "")]
+        public void Given_Cvv_Number_Should_Masl(int cvv, string expected)
+        {
+            var actual = _cosmosDatabaseClient.MaskCvv(new SavedPaymentDetails { Cvv = cvv});
+
+            Assert.That(actual.Contains(expected));
+        }
+
     }
 }

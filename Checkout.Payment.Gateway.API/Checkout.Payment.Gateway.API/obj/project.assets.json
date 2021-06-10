@@ -19,6 +19,18 @@
           "lib/netstandard2.0/Azure.Core.dll": {}
         }
       },
+      "JsonMasking/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/JsonMasking.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/JsonMasking.dll": {}
+        }
+      },
       "Microsoft.Azure.Cosmos/3.19.0": {
         "type": "package",
         "dependencies": {
@@ -437,6 +449,18 @@
         "lib/netstandard2.0/Azure.Core.dll",
         "lib/netstandard2.0/Azure.Core.xml",
         "pkgicon.png"
+      ]
+    },
+    "JsonMasking/1.2.0": {
+      "sha512": "AsqJIRlRFYacStGKL6+3y9dWSve/zQpc2HFHPNnhgzyQIApQ6j5EQATOloBRSGx4kHmfFxtoTQfmRPETw30OCA==",
+      "type": "package",
+      "path": "jsonmasking/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "jsonmasking.1.2.0.nupkg.sha512",
+        "jsonmasking.nuspec",
+        "lib/netstandard2.0/JsonMasking.dll"
       ]
     },
     "Microsoft.Azure.Cosmos/3.19.0": {
@@ -1252,6 +1276,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "Checkout.Payment.Gateway.Contracts >= 1.0.0",
+      "JsonMasking >= 1.2.0",
       "Microsoft.Azure.Cosmos >= 3.19.0",
       "Microsoft.Extensions.Logging >= 5.0.0",
       "Newtonsoft.Json >= 13.0.1",
@@ -1302,6 +1327,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "JsonMasking": {
+            "target": "Package",
+            "version": "[1.2.0, )"
+          },
           "Microsoft.Azure.Cosmos": {
             "target": "Package",
             "version": "[3.19.0, )"

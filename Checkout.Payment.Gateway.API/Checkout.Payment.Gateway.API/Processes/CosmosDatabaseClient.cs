@@ -14,13 +14,28 @@ namespace Checkout.Payment.Gateway.API.Processes
             _cosmosDatabaseWrapper = cosmosDatabaseWrapper;
         }
 
-        public async Task<SavedPaymentDetails> GetPaymentDetails(Guid indentifer)
+        public async Task<SavedPaymentDetailsResponse> GetPaymentDetails(Guid indentifer)
         {
             try
             {
-                return await _cosmosDatabaseWrapper.GetItemAsync<SavedPaymentDetails>(indentifer);
-            }
-            catch (Exception e)
+                var response = await _cosmosDatabaseWrapper.GetItemAsync<SavedPaymentDetails>(indentifer);
+
+                if (response != null)
+                {
+                    return new SavedPaymentDetailsResponse
+                    {
+                        CardNumber = MaskCardNumber(response),
+                        Currency = response.Currency,
+                        Cvv = MaskCvv(response),
+                        NameOnCard = response.NameOnCard,
+                        Amount = response.Amount,
+                        Expiry = response.Expiry,
+                        Identifier = response.Identifier
+                    };
+                }
+
+                return null;
+            }catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
@@ -51,6 +66,46 @@ namespace Checkout.Payment.Gateway.API.Processes
             {
                 throw new Exception(e.Message);
             }
+        }
+
+        public string MaskCardNumber(SavedPaymentDetails paymentDetails)
+        {
+            if(paymentDetails.CardNumber.ToString().Length <= 4)
+            {
+                return string.Empty;
+            }
+
+            var numbersToMask = paymentDetails.CardNumber.ToString().Length - 4;
+
+            var mask = Mask(numbersToMask);
+
+            return mask += paymentDetails.CardNumber.ToString().Substring(numbersToMask);
+        }
+
+        public string MaskCvv(SavedPaymentDetails paymentDetails)
+        {
+            if (paymentDetails.Cvv.ToString().Length <= 1)
+            {
+                return string.Empty;
+            }
+
+            var numbersToMask = paymentDetails.Cvv.ToString().Length - 1;
+
+            var mask = Mask(numbersToMask);
+
+            return mask += paymentDetails.Cvv.ToString().Substring(numbersToMask);
+        }
+
+        private string Mask(int lengthToMask)
+        {
+            var cardNumber = string.Empty;
+
+            for (var i = 0; i < lengthToMask; i++)
+            {
+                cardNumber += "*";
+            }
+
+            return cardNumber;
         }
     }
 }

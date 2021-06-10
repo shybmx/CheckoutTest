@@ -64,7 +64,7 @@ namespace Checkout.Payment.Gateway.API.UnitTests
             Assert.That(actual.GetType, Is.EqualTo(typeof(NotFoundObjectResult)));
         }
 
-        [Test]
+        /*[Test]
         public async Task Given_Identifer_And_Found_In_Database_Should_Respone_With_Success()
         {
             _cosmosDatabaseClientMock.Setup(x => x.GetPaymentDetails(It.IsAny<Guid>())).ReturnsAsync(new SavedPaymentDetails());
@@ -72,7 +72,7 @@ namespace Checkout.Payment.Gateway.API.UnitTests
             var actual = await _paymentGatewayController.GetPaymentDetails(Guid.NewGuid());
 
             Assert.That(actual.GetType, Is.EqualTo(typeof(OkObjectResult)));
-        }
+        }*/
 
         [Test]
         public async Task Given_Identifer_And_Not_Found_In_Database_Should_Respone_With_NotFound()

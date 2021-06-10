@@ -5,5 +5,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <ActiveDebugProfile>Checkout.Payment.Gateway.API</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>CheckoutPaymentGatewayAPI - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

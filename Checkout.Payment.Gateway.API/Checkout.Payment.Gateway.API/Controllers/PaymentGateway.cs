@@ -1,7 +1,6 @@
 ﻿using Checkout.Payment.Gateway.API.Interfaces;
 using Checkout.Payment.Gateway.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 

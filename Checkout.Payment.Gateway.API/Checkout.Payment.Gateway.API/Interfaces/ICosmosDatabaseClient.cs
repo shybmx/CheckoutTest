@@ -7,6 +7,8 @@ namespace Checkout.Payment.Gateway.API.Interfaces
     public interface ICosmosDatabaseClient
     {
         Task SavePaymentDetails(PaymentDetails paymentDetails, BankResponse bankResponse);
-        Task<SavedPaymentDetails> GetPaymentDetails(Guid indentifer);
+        Task<SavedPaymentDetailsResponse> GetPaymentDetails(Guid indentifer);
+        string MaskCardNumber(SavedPaymentDetails paymentDetails);
+        string MaskCvv(SavedPaymentDetails paymentDetails);
     }
 }

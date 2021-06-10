@@ -11,7 +11,6 @@ namespace Checkout.Payment.Gateway.API.Processes
     {
         private HttpClient _client;
         
-
         public HttpClientWrapper()
         {
             _client = new HttpClient();
@@ -19,7 +18,6 @@ namespace Checkout.Payment.Gateway.API.Processes
 
         public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
         {
-            //TODO: add a retry
             return _client.Send(request);
         }
     }
