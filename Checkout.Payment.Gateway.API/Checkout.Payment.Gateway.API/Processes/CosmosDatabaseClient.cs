@@ -58,7 +58,7 @@ namespace Checkout.Payment.Gateway.API.Processes
                 Cvv = paymentDetails.Cvv,
                 Expiry = paymentDetails.Expiry,
                 IsSuccessful = bankResponse.PaymentSuccessful,
-                Identifier = paymentDetails.Identifier,
+                Identifier = bankResponse.Identifier,
                 PostCode = paymentDetails.PostCode
             };
 

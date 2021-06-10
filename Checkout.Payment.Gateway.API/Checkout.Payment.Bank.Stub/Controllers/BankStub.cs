@@ -20,7 +20,7 @@ namespace Checkout.Payment.Bank.Stub.Controllers
                 isSuccessful = false;
             }
 
-            return new OkObjectResult(new BankResponse { Identifier = paymentDetails.Identifier, PaymentSuccessful = isSuccessful });
+            return new OkObjectResult(new BankResponse { Identifier = Guid.NewGuid(), PaymentSuccessful = isSuccessful });
         }
     }
 }

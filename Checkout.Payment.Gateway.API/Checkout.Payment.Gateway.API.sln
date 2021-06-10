@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{47B4C138
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Payment.Gateway.API.UnitTests", "Checkout.Payment.Gateway.API.UnitTests\Checkout.Payment.Gateway.API.UnitTests.csproj", "{99AEA606-E66D-442E-AE97-17BE5DE6581E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Payment.Bank.Stub", "Checkout.Payment.Bank.Stub\Checkout.Payment.Bank.Stub.csproj", "{803A1FFE-710A-48CC-B96D-1E6B8221A933}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Payment.Bank.Stub", "Checkout.Payment.Bank.Stub\Checkout.Payment.Bank.Stub.csproj", "{803A1FFE-710A-48CC-B96D-1E6B8221A933}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

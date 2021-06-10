@@ -27,8 +27,6 @@ namespace Checkout.Payment.Gateway.API.Controllers
                 return new BadRequestObjectResult("Invalid Query");
             }
 
-            paymentDetails.Identifier = Guid.NewGuid();
-
             var details = await _paymentProcess.SendPayment(paymentDetails);
 
             if (details != null)
