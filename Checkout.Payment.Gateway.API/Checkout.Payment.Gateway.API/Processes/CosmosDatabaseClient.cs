@@ -51,6 +51,7 @@ namespace Checkout.Payment.Gateway.API.Processes
             var savedPaymentDetails = new SavedPaymentDetails
             {
                 Amount = paymentDetails.Amount,
+                NameOnCard = paymentDetails.NameOnCard,
                 CardNumber = paymentDetails.CardNumber,
                 Currency = paymentDetails.Currency,
                 Cvv = paymentDetails.Cvv,
