@@ -30,7 +30,8 @@ namespace Checkout.Payment.Gateway.API.Processes
                         NameOnCard = response.NameOnCard,
                         Amount = response.Amount,
                         Expiry = response.Expiry,
-                        Identifier = response.Identifier
+                        Identifier = response.Identifier, 
+                        PostCode = response.PostCode
                     };
                 }
 
@@ -57,7 +58,8 @@ namespace Checkout.Payment.Gateway.API.Processes
                 Cvv = paymentDetails.Cvv,
                 Expiry = paymentDetails.Expiry,
                 IsSuccessful = bankResponse.PaymentSuccessful,
-                Identifier = paymentDetails.Identifier
+                Identifier = paymentDetails.Identifier,
+                PostCode = paymentDetails.PostCode
             };
 
             try

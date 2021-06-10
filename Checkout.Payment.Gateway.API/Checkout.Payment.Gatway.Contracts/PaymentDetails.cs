@@ -25,6 +25,9 @@ namespace Checkout.Payment.Gateway.Contracts
         [Required]
         [Range(100,999)]
         public int Cvv { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string PostCode { get; set; }
         public Guid Identifier { get; set; }
     }
 }
