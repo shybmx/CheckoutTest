@@ -8,6 +8,6 @@ namespace Checkout.Payment.Gateway.API.UnitTests
         public static DateTime Expiry = DateTime.UtcNow;
         public static double Amount = 34.26;
         public static string Currency = "GBP";
-        public static int Cvv = 021;
+        public static int Cvv = 221;
     }
 }

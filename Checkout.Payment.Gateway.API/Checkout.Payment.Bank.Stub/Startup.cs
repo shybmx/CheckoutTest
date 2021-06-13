@@ -40,9 +40,10 @@ namespace Checkout.Payment.Bank.Stub
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Checkout.Payment.Bank.Stub v1"));
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Checkout.Payment.Bank.Stub v1"));
 
             app.UseHttpsRedirection();
 

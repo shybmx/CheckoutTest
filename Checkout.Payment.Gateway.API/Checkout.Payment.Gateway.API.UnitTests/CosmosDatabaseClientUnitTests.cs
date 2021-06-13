@@ -83,6 +83,9 @@ namespace Checkout.Payment.Gateway.API.UnitTests
             Assert.That(actual.NameOnCard, Is.EqualTo(_savedPaymentDetails.NameOnCard));
             Assert.That(actual.Amount, Is.EqualTo(_savedPaymentDetails.Amount));
             Assert.That(actual.Expiry, Is.EqualTo(_savedPaymentDetails.Expiry));
+            Assert.That(actual.Cvv, Is.EqualTo("**1"));
+            Assert.That(actual.CardNumber, Is.EqualTo("***************5334"));
+            Assert.That(actual.PostCode, Is.EqualTo(_paymentDetails.PostCode));
         }
 
         [Test]
